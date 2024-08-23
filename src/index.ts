@@ -13,7 +13,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Testa anslutningen till PostgreSQL
 pool.connect()
   .then(client => {
     console.log('Connected to the database');
@@ -24,7 +23,6 @@ pool.connect()
 // Middleware för att hantera JSON-data
 app.use(express.json());
 
-// Skapa en enkel GET-route för att läsa alla filmer
 app.get('/film', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM film');
@@ -34,7 +32,6 @@ app.get('/film', async (req, res) => {
   }
 });
 
-// Starta Express-servern
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
